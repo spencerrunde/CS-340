@@ -2,7 +2,7 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 
 class AnimalShelter(object):
-    """ CRUD operations for Animal collection in MongoDB """
+    # CRUD operations for Animal collection in MongoDB
     
     def __init__(self, username, password):
         # Initializing the MongoClient. This helps to 
@@ -13,7 +13,7 @@ class AnimalShelter(object):
 # Complete this create method to implement the C in CRUD.
     def create(self, data):
         if data is not None:
-            self.database.animals.insert(data) # data should be dictionary, defined in unit test
+            self.database.animals.insert(data) # Data should be dictionary, defined in unit test
             return True # Returning true if insert is successful
         else:
             raise Exception("Nothing to save, because data parameter is empty.") # Returning error if insert is not successful
@@ -26,7 +26,7 @@ class AnimalShelter(object):
             raise Exception("Nothing to search, because search parameter is empty.") # Returning error if read is not  successful
 
 # Create method to implement the U in CRUD.
-    def update(self, data, updatedData): # this method has an additional argument, which is the new dictionary that will replace the original
+    def update(self, data, updatedData): # This method has an additional argument, which is the new dictionary that will replace the original
         if data is not None:
             return self.database.animals.update_one(data, {'$set': updatedData}) # Returns cursor indicating successful update
         else:
